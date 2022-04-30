@@ -1,22 +1,23 @@
-from typing import Tuple, Type
+from typing import Tuple, Type, Dict
 from collections import namedtuple
+import requests
 from requests import Request
 from src.errors import HttpRequestError
-import requests
+from src.data.interfaces.swapi_api_consumer import SwapiApiConsumerInterface
 
-class SwapiApiConsumer:
+class SwapiApiConsumer(SwapiApiConsumerInterface):
 
     ''' Class to consume swapi api with http requests '''
 
     def __init__(self) -> None:
         self.get_starships_response = namedtuple('GET_Starships', 'status_code request response')
 
-    def get_starships(self, page: int) -> Tuple[int, Type[Request], dict]:
+    def get_starships(self, page: int) -> Tuple[int, Type[Request], Dict]:
 
         ''' 
             Get starships from swapi api with pagination
             :parm - page: int with page of navegation
-         :  :return - tuple with status code, request and response attributes
+            :return - tuple with status code, request and response attributes
         '''
 
         req = requests.Request(
