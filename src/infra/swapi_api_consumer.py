@@ -44,8 +44,8 @@ class SwapiApiConsumer(SwapiApiConsumerInterface):
     def get_starship_infomation(self, starship_id: int) -> Tuple[int, Type[Request], Dict]:
 
             ''' 
-                Get starships from swapi api with pagination
-                :parm - page: int with page of navegation
+                Get starships from swapi api with information
+                :parm - starship_id: int with Id of starship selected
                 :return - tuple with status code, request and response attributes
             '''
 
